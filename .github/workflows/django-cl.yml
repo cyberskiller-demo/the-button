@@ -37,7 +37,7 @@ jobs:
         coverage html
     
     - name: Upload test reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v2
       with:
         name: test-reports
         path: |
