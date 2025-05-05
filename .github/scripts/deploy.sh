@@ -21,6 +21,6 @@ echo "Deploying application..."
 scp -i ~/.ssh/deploy_key .env.prod $EC2_USER@$EC2_HOST:~/.env
 scp -i ~/.ssh/deploy_key docker-compose.yml $EC2_USER@$EC2_HOST:~/
 # Running the application on the server
-ssh -i ~/.ssh/deploy_key $EC2_USER@$EC2_HOST "cd ~/ && docker compose up --force-recreate -d "
+ssh -i ~/.ssh/deploy_key $EC2_USER@$EC2_HOST "cd ~/ && docker compose up -d "
 
 echo "Deployment completed successfully"
