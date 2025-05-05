@@ -48,7 +48,8 @@ jobs:
           body: ${{ steps.versioning.outputs.changelog }}
           draft: false
           prerelease: false
-    # Tagowanie istniejącego obrazu Docker
+          
+   # Tagowanie istniejącego obrazu Docker
       - name: Login to DockerHub
         if: steps.versioning.outputs.new_tag
         uses: docker/login-action@v2
