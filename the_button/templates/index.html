@@ -10,7 +10,6 @@
 <body>
   <button id="pingButton">Ping</button>
   <p id="response"></p>
-  <p>Wersja: <span id="version">-</span></p>
 
   <script>
     document.getElementById("pingButton").addEventListener("click", function () {
@@ -18,7 +17,6 @@
         .then(response => response.json())
         .then(data => {
           document.getElementById("response").textContent = data.message;
-          document.getElementById("version").textContent = data.version || "-";
         });
     });
   </script>
