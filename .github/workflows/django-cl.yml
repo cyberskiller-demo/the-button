@@ -3,8 +3,11 @@ name: Python CI/CD Pipeline
 on:
   push:
     branches: [ master ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ master ]
+  
   workflow_dispatch:
 
 jobs:
@@ -154,6 +157,19 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v3
+
+      - name: Get version from tag
+        id: get_version
+        run: |
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+            echo "is_tag=true" >> $GITHUB_OUTPUT
+          else
+            VERSION=latest
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+            echo "is_tag=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Install SSH Key
         run: |
