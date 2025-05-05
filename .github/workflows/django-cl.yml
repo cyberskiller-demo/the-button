@@ -151,6 +151,7 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
+    needs: deploy-to-dev
     outputs: 
       tag: ${{ steps.versioning.outputs.new_tag }}
     steps:
@@ -207,7 +208,7 @@ jobs:
           echo "Obraz Docker został otagowany wersją ${{ steps.versioning.outputs.new_tag }} i wypchnięty do Docker Hub"
 
   deploy-to-production:
-    needs: deploy-to-dev
+    needs: release
     runs-on: ubuntu-latest
     environment: production
     steps:
