@@ -167,7 +167,7 @@ jobs:
           
       - name: Prepare deployment
         run: |
-          chmod +x ./deploy.sh
+          chmod +x ./.github/scripts/deploy.sh
           
       - name: Deploy to EC2
         env:
@@ -178,5 +178,5 @@ jobs:
           ENV_NAME: production
         run: |
           echo "Starting deployment to EC2..."
-          ./deploy.sh $IMAGE_NAME $TAG $EC2_HOST $EC2_USER $ENV_NAME
+          ./.github/scripts/deploy.sh $IMAGE_NAME $TAG $EC2_HOST $EC2_USER $ENV_NAME
 
