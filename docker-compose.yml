@@ -7,4 +7,5 @@ services:
     environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
       ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      VERSION: ${TAG:}
 
