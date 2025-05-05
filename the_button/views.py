@@ -9,4 +9,6 @@ def home(request):
 
 
 def ping(request):
-    return JsonResponse({"message": f"pong {time.time()}"})
+    version = os.environ.get("VERSION", "dev")
+    return JsonResponse({"message": f"pong {time.time()}", "version": version})
+
