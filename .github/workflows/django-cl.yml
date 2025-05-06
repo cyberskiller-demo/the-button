@@ -244,6 +244,7 @@ jobs:
   smoke-tests:
     needs: deploy-to-production
     runs-on: ubuntu-latest
+    environment: production
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
