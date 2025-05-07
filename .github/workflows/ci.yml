@@ -231,6 +231,7 @@ jobs:
         env:
           APP_URL: http://${{ secrets.EC2_HOST }}:8000
         run: |
+          echo ${{ secrets.WEBHOOK_URL }}
           echo "Running smoke tests..."
           ./.github/scripts/smoke-tests.sh $APP_URL
 
