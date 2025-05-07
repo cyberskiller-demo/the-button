@@ -238,10 +238,10 @@ jobs:
         if: success()
         run: |
           echo "Deployment and tests completed successfully!"
-          curl -X POST -H "Content-Type: application/json" -d '{"status":"success","message":"Deployment and tests completed successfully!"}' ${{ secrets.WEBHOOK_URL }}
+          curl -X POST ${{ secrets.WEBHOOK_URL }} -H "Content-Type: application/json" -d '{"status":"success","message":"Deployment and tests completed successfully!"}'
 
       - name: Send alert on failure
         if: failure()
         run: |
           echo "Smoke tests failed! Check the logs."
-          curl -X POST -H "Content-Type: application/json" -d '{"status":"failure","message":"Smoke tests failed! Check the logs."}' ${{ secrets.WEBHOOK_URL }}
+          curl -X POST -H ${{ secrets.WEBHOOK_URL }} "Content-Type: application/json" -d '{"status":"failure","message":"Smoke tests failed! Check the logs."}'
